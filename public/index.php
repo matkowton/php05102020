@@ -1,72 +1,26 @@
 <?php
-/*
-$a = 1;
-$b = &$a;
-$b = 4;
-var_dump($a, $b);
+$heading = 'Начало домашнего задания';
+$year = 2020;
+$string = "Текущий год - $year";
+?>
 
-define('PI_DIGIT', 3.14);
-
-var_dump(PI_DIGIT);
-
-$integer = 10;
-$float = 0.75;
-$string_single = 'это строка';
-$string_double = "это тоже строка";
-$boolean = true;
-
-$array = [1, 2 , 5, 8];
-$object = new stdClass();
-$resource = fopen('test.txt', 'a+');
-
-$null = null;
-*/
-
-/* Операции со строками */
-$n = 10;
-$string_single = 'это $n \n\t строка';
-$string_double = "это {$n} \n\t тоже строка";
-
-echo $string_single;
-echo "<br>";
-echo $string_double ;
-
-# Операции с числами
-/*$a = 5;
-$b = 7;
-echo $a + $b;
-echo $a - $b;
-echo $a / $b;
-echo $a * $b;
-echo $a % $b;
-echo $a ** $b;
-
-var_dump($a++);
-var_dump($a);
-
-$a *= 5;
-*/
-
-// Операции сравнения
-$a = 5;
-$b = 7;
-
-var_dump($a == $b);
-var_dump($a === $b);
-var_dump($a != $b);
-var_dump($a !== $b);
-var_dump($a > $b);
-var_dump($a < $b);
-var_dump($a <= $b);
-var_dump($a >= $b);
-
-var_dump($a <=> $b);
-
-
-
-
-
-
-
-
-
+<h1> <?php echo $heading; ?> </h1>
+<p><?php echo $string; ?></p>
+<p>
+    Задание с объяснением
+</p>
+<ul>
+    <li>
+        $a = 5;
+        $b = '05';
+        var_dump($a == $b);         // Почему true?
+        var_dump((int)'012345');     // Почему 12345?
+        var_dump((float)123.0 === (int)123.0); // Почему false?
+        var_dump((int)0 === (int)'hello, world'); // Почему true?
+        ?></li>
+    <li> число 5 равно строке '5' при сравнении без проверки типа данных</li>
+    <li>"Почему 12345?" - ответа не нашел, видимо '0' - дампится в 0, а в '01' и подобных 0 игнорируется</li>
+    <li>"Почему false" - тут идет строгое сравнение, с учетом типа данных, а число и число с плавающей точкой - это разные типы данных</li>
+    <li>"Почему true?" - тут строка преобразуется к числу, а любая строка которая начинается не с чила преобразуется к 0, и получается что 0 === 0</li>
+</ul>
+<p>Задание со звездочкой сам не решил, но нашел в интернете, логику понял</p>
