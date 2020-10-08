@@ -1,72 +1,52 @@
 <?php
+//declare(strict_types=1);
+
+
+$x = 5;
+$y = 7;
+var_dump($x);
+echo calculateAverage($x, $y);
+var_dump($x);
 /*
-$a = 1;
-$b = &$a;
-$b = 4;
-var_dump($a, $b);
+$x = 2;
+$y = 4;
 
-define('PI_DIGIT', 3.14);
+echo calculateAverage($x, $y);
 
-var_dump(PI_DIGIT);
+$x = 15;
+$y = '15';
 
-$integer = 10;
-$float = 0.75;
-$string_single = 'это строка';
-$string_double = "это тоже строка";
-$boolean = true;
+echo calculateAverage($x, $y);
+*/
+function calculateAverage(int $arg1, int $arg2): int
+{
+    return ($arg1 + $arg2) / 2;
+}
 
-$array = [1, 2 , 5, 8];
-$object = new stdClass();
-$resource = fopen('test.txt', 'a+');
+// 5! = 5 * 4 * 3 * 2 * 1| 5! = 5 * 4!| 4! = 4 * 3!
+//n! = n * (n - 1)!;
+//рекурсия
+/*var_dump(factorial(-5));
 
-$null = null;
+function factorial(int $n): int
+{
+    if($n == 1) {
+        return $n;
+    }
+    return $n * factorial($n - 1);
+}
 */
 
-/* Операции со строками */
-$n = 10;
-$string_single = 'это $n \n\t строка';
-$string_double = "это {$n} \n\t тоже строка";
+$foo = function() {
+    echo "Я анонимко!!!";
+    return 111;
+};
 
-echo $string_single;
-echo "<br>";
-echo $string_double ;
+$arr = [2, 4, 8];
+$x = 3;
+$power = function($elem) use ($x) {return $elem ** $x;};
 
-# Операции с числами
-/*$a = 5;
-$b = 7;
-echo $a + $b;
-echo $a - $b;
-echo $a / $b;
-echo $a * $b;
-echo $a % $b;
-echo $a ** $b;
+$power = fn($elem) => $elem ** $x;
 
-var_dump($a++);
-var_dump($a);
-
-$a *= 5;
-*/
-
-// Операции сравнения
-$a = 5;
-$b = 7;
-
-var_dump($a == $b);
-var_dump($a === $b);
-var_dump($a != $b);
-var_dump($a !== $b);
-var_dump($a > $b);
-var_dump($a < $b);
-var_dump($a <= $b);
-var_dump($a >= $b);
-
-var_dump($a <=> $b);
-
-
-
-
-
-
-
-
-
+var_dump(array_map($power, $arr));
+?>
