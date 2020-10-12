@@ -1,52 +1,65 @@
 <?php
-//declare(strict_types=1);
-
-
-$x = 5;
-$y = 7;
-var_dump($x);
-echo calculateAverage($x, $y);
-var_dump($x);
-/*
-$x = 2;
-$y = 4;
-
-echo calculateAverage($x, $y);
-
-$x = 15;
-$y = '15';
-
-echo calculateAverage($x, $y);
-*/
-function calculateAverage(int $arg1, int $arg2): int
-{
-    return ($arg1 + $arg2) / 2;
+/*$i = 10;
+//Цикл с предусловием
+while (++$i < 10) {
+    echo $i . "<br>";
 }
 
-// 5! = 5 * 4 * 3 * 2 * 1| 5! = 5 * 4!| 4! = 4 * 3!
-//n! = n * (n - 1)!;
-//рекурсия
-/*var_dump(factorial(-5));
+//Цикл с постусловием
+do {
+    echo $i . "<br>";
+} while (++$i < 10);
 
-function factorial(int $n): int
-{
-    if($n == 1) {
-        return $n;
+//Цикл со счетчиком
+for ($i = 0; $i < 10; $i++) {
+    if ($i == 5) {
+        continue;
     }
-    return $n * factorial($n - 1);
-}
+    echo $i . "<br>";
+}*/
+/*
+$array = [1, true, 'test', [1, 2], 12];
+
+var_dump($array);
+
+$array[] = 100;
+
+
+$array[100] = 'Привет!!!';
+$array['test'] = '100500';
+var_dump($array);
 */
 
-$foo = function() {
-    echo "Я анонимко!!!";
-    return 111;
-};
+$article = [
+    'title' => 'Article',
+    'content' => 'kljsdksdjklsdjklsdjkl',
+    'date' => date('Y-m-d'),
+    'author' => [
+        'first_name' => 'Vasya',
+        'last_name' => 'Pupkin'
+    ]
+];
 
-$arr = [2, 4, 8];
-$x = 3;
-$power = function($elem) use ($x) {return $elem ** $x;};
 
-$power = fn($elem) => $elem ** $x;
+foreach ($article as $key => &$value) {
+    if($key == 'title') {
+        $value .= '111111111111111111111111111';
+    }
+}
+unset($value);
 
-var_dump(array_map($power, $arr));
-?>
+$article2 = [
+    'title' => 'Article2',
+    'content' => '3433343434333434',
+    'date' => date('Y-m-d'),
+    'author' => [
+        'first_name' => 'Petya',
+        'last_name' => 'Vasechkin'
+    ]
+];
+
+foreach ($article2 as $value) {
+    $value++;
+}
+
+var_dump($article2);
