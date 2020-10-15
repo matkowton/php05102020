@@ -1,52 +1,50 @@
 <?php
-//declare(strict_types=1);
+//include "draw23.php";
+/*include_once*/
+//require "draw.php";
 
+require_once $_SERVER['DOCUMENT_ROOT'] . "/../config/main.php";
+require_once ROOT_DIR . "engine/draw.php";
 
-$x = 5;
-$y = 7;
-var_dump($x);
-echo calculateAverage($x, $y);
-var_dump($x);
+//Запись в файл
 /*
-$x = 2;
-$y = 4;
+$menu = [
+    'Главная',
+    'Корзина',
+    'Доставка'
+];
 
-echo calculateAverage($x, $y);
-
-$x = 15;
-$y = '15';
-
-echo calculateAverage($x, $y);
-*/
-function calculateAverage(int $arg1, int $arg2): int
-{
-    return ($arg1 + $arg2) / 2;
+  $f = fopen(ROOT_DIR . '/data/menu.txt', 'w+');
+foreach ($menu as $item) {
+    fputs($f, $item . "\n");
+}
+fclose($f);*/
+/*
+$menu = [];
+$f = fopen(ROOT_DIR . '/data/menu.txt', 'a+');
+while($string = fgets($f)) {
+    $menu[] = $string;
 }
 
-// 5! = 5 * 4 * 3 * 2 * 1| 5! = 5 * 4!| 4! = 4 * 3!
-//n! = n * (n - 1)!;
-//рекурсия
-/*var_dump(factorial(-5));
-
-function factorial(int $n): int
-{
-    if($n == 1) {
-        return $n;
+fclose($f);
+drawMenu($menu);
+*/
+/*
+$dir = opendir(ROOT_DIR);
+while ($element = readdir($dir)) {
+    if(is_dir(ROOT_DIR . "/" . $element)) {
+        echo "<b>$element</b><br>";
+    } else {
+        echo "$element<br>";
     }
-    return $n * factorial($n - 1);
 }
+closedir($dir);
 */
 
-$foo = function() {
-    echo "Я анонимко!!!";
-    return 111;
-};
+var_dump(scandir(ROOT_DIR));
 
-$arr = [2, 4, 8];
-$x = 3;
-$power = function($elem) use ($x) {return $elem ** $x;};
-
-$power = fn($elem) => $elem ** $x;
-
-var_dump(array_map($power, $arr));
 ?>
+
+
+
+
