@@ -8,5 +8,5 @@ if(!isset($_SESSION['user_id'])) {
     redirect('/login.php');
 }
 
-$products = getAllProducts();
+$products = getProducts();
 include VIEWS_DIR . 'admin/products/index.php';

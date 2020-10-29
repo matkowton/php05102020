@@ -1,8 +1,12 @@
 <?php
-require_once ENGINE_DIR . "db.php";
-function getAllProducts()
+function getProducts(array $ids = [])
 {
-    return queryAll("SELECT * FROM products");
+    $where = '';
+    if(!empty($ids)) {
+        $in = implode(', ', $ids);
+        $where = "WHERE id IN ($in)";
+    }
+    return queryAll("SELECT * FROM products {$where}");
 }
 
 function getProductById($id)
@@ -13,6 +17,12 @@ function getProductById($id)
 function getProductImages($id)
 {
     return queryAll("SELECT * FROM product_images WHERE product_id = {$id}");
+}
+
+function addProductImage(string $title, string $path, int $product_id) {
+    $sql = "INSERT INTO product_images(title, path, product_id)
+            VALUES ('{$title}','{$path}', {$product_id})";
+    return execute($sql);
 }
 
 function updateProduct(int $id, array $data) {

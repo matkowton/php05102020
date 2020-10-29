@@ -8,10 +8,11 @@ function getFiles(string $directory): array {
     );
 }
 
-function uploadFile(string $name, string $destination) {
+function uploadFile(string $name, string $destination): bool {
     if(isset($_FILES[$name])) {
         $tmpPath = $_FILES[$name]['tmp_name'];
         $destination = $destination . $_FILES[$name]['name'];
-        move_uploaded_file($tmpPath, $destination);
+        return move_uploaded_file($tmpPath, $destination);
     }
+    return false;
 }

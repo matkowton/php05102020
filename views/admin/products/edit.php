@@ -16,3 +16,15 @@
     </div>
     <input type="submit" value="<?=is_null($product)? 'Создать' : 'Редактировать'?>">
 </form>
+
+<?php foreach ($product['images'] as $image):?>
+    <img width="200"  src="/img/small/<?=$image['path']?>" alt="">
+<?php endforeach;?>
+
+<form action="/admin/products/add_image.php" method="post" enctype="multipart/form-data">
+    <? if (!is_null($product)): ?>
+        <input type="hidden" value="<?= $product['id'] ?>" name="id">
+    <? endif; ?>
+    <input type="file" name="image">
+    <input type="submit">
+</form>

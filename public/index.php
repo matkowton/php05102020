@@ -1,6 +1,16 @@
 <?php
-require_once __DIR__ . '\..\config\main.php';
-require ENGINE_DIR . "base.php";
-require ENGINE_DIR . "products.php";
-$products = getAllProducts();
-include VIEWS_DIR . 'catalog.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '\..\config\main.php';
+require ENGINE_DIR . "autoload.php";
+session_start();
+
+if(!$requestUri = preg_replace(['#^/#','#[?].*#'],"",  $_SERVER['REQUEST_URI'])){
+    $requestUri = DEFAULT_CONTROLLER;
+}
+
+$parts = explode("/", $requestUri);
+$page = $parts[0];
+$action = $parts[1] ?? DEFAULT_ACTION;
+$scriptName = PAGES_DIR . $page . "/" . $action . ".php";
+include $scriptName;
+
+
